@@ -18,6 +18,8 @@ jobs:
           node-version: '12.x'
       - name: npm install
         run: npm install
+      - name: npm install frontend
+        run: cd blogApp-frontend && npm install 
       - name: lint
         run: npm run lint
       - name: build
@@ -27,7 +29,7 @@ jobs:
       - name: e2e tests
         uses: cypress-io/github-action@v2
         with:
-          command: cd blogApp-frontend && npm install && npm run test:e2e
+          command: cd blogApp-frontend && npm run test:e2e
           start: npm run start:test
           wait-on: http://localhost:3003
  
