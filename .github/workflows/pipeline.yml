@@ -1,0 +1,33 @@
+name: Deployment pipeline
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches: [master]
+    types: [opened,synchronize]
+
+jobs:
+  simple_deployment_pipeline:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: npm install
+        run: npm install
+      - name: lint
+        run: npm run eslint
+      - name: build
+        run: npm run build:move
+      - name: test
+        run: npm test
+      - name: e2e tests
+        uses: cypress-io/github-action@v2
+        with:
+          command: cd blogApp-frontend && npm run test:e2e
+          start: npm run start:test
+          wait-on: http://localhost:3003
+ 
