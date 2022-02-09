@@ -39,5 +39,8 @@
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "resolutions": {
+    "babel-jest": "^26.6.0"
   }
 }
