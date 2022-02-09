@@ -11,7 +11,7 @@
     "start:test": "cross-env NODE_ENV=test node index.js",
     "start-prod": "node index.js",
     "build": "cd blogApp-frontend && npm run build",
-    "transfer": "cd blogApp-frontend && xcopy 'build' '..\\build' //i //e",
+    "transfer": "cd blogApp-frontend && mkdir -p ../build && cp -r -u /build ../build",
     "build:move": "npm run build && npm run transfer"
   },
   "author": "gocheco",
