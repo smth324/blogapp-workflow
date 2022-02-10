@@ -11,4 +11,4 @@ jobs:
       - name: Check the deployed service URL
         uses: jtalk/url-health-check-action@v2
         with:
-          url: https://fsopokedexwil.herokuapp.com/health
+          url: https://wilblogapp.herokuapp.com/health
