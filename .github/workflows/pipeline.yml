@@ -13,6 +13,10 @@ jobs:
     runs-on: ubuntu-18.04
     env:
       SKIP_PREFLIGHT_CHECK: true
+      MONGODB_URI: ${{ secrets.MONGODB_URI}}
+      PORT: ${{ secrets.PORT }}
+      TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI}}
+      SECRET: ${{ secrets.SECRET }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
