@@ -30,22 +30,11 @@ jobs:
         run: npm run lint
       - name: build
         run: npm run build:move
-      - name: test
-        run: npm test
-      - name: e2e tests
-        uses: cypress-io/github-action@v2
-        with:
-          command: npm run test:e2e
-          start: npm run start:test
-          wait-on: http://localhost:3003
-      - name: deploy to heroku
-        if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip')}}
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with: 
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "wilblogapp"
-          heroku_email: "Isaerwilliamvicsongocheco@gmail.com"
-          healthcheck: "https://wilblogapp.herokuapp.com/health"
-          checkstring: "ok"
-          rollbackonhealthcheckfailed: true
- 
+      - uses: actions/checkout@v2
+      - name: Bump version and push tag
+        if: ${{ github.event_name == 'push'  && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
+        uses: anothrNick/github-tag-action@1.33.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
+          RELEASE_BRANCHES: main
