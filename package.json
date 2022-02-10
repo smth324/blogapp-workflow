@@ -14,7 +14,8 @@
     "transferwindows": "cd blogApp-frontend && xcopy 'build' '..\\build' //i //e",
     "transfer": "cd blogApp-frontend && mkdir -p ../build && cp -r -u build ../BlogApp-backend",
     "build:move": "npm run build && npm run transfer",
-    "test:e2e": "cd blogApp-frontend && npm run test:e2e"
+    "test:e2e": "cd blogApp-frontend && npm run test:e2e",
+    "heroku-prebuild": "cd blogApp-frontend && npm install"
   },
   "author": "gocheco",
   "license": "ISC",
