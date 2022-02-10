@@ -1,0 +1,14 @@
+name: periodic-health-check
+
+on: 
+  schedule:
+    - cron: '0 * * * *'
+
+jobs: 
+  heatlhcheck:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Check the deployed service URL
+        uses: jtalk/url-health-check-action@v2
+        with:
+          url: https://fsopokedexwil.herokuapp.com/health
