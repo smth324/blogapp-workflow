@@ -27,7 +27,7 @@ app.use(express.json())
 app.get('/health', (_req,res) => {
   res.send('ok')
 })
-// changes does this work
+// changes does this works
 app.use(middleware.tokenExtractor)
 app.use('/api/blogs', blogsRouter)
 app.use('/api/users', usersRouter)
