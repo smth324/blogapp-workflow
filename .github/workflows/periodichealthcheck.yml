@@ -2,7 +2,7 @@ name: periodic-health-check
 
 on: 
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 0 1 * *'
 
 jobs: 
   heatlhcheck:
@@ -11,4 +11,4 @@ jobs:
       - name: Check the deployed service URL
         uses: jtalk/url-health-check-action@v2
         with:
-          url: https://wilblogapp.herokuapp.com/health
+          url: https://wilblogapp.herokuapp.com/health 
